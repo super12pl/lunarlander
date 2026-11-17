@@ -13,9 +13,8 @@ void delay(float sec)
 }
 
 const float g = 1.6;
-float m,H_0,v_0,F_c,H,V;
+float m,H_0,v_0,F_c,H,V,timeflow;
 char nazwapliku[256];
-float timeflow = 0.2;
 bool silnik = false;
 float H,v;
 void *silniklistener()
@@ -34,6 +33,7 @@ int main(int argc,char *argv[])
     v_0 = argc>=4 ? strtof(argv[3],NULL):10;
     F_c = argc>=5 ? strtof(argv[4],NULL):4500;
     strcpy(nazwapliku,(argc>=6 ? argv[5]:"ksiezycOutput.csv"));
+    timeflow = argc>=7 ? strtof(argv[6],NULL):0.2;
     H = H_0;
     v = v_0;
     FILE *f;
