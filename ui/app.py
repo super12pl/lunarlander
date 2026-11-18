@@ -36,10 +36,13 @@ class MainWindow(QMainWindow):
             return
         self.hs.append(float(newData[1]))
         self.vs.append(float(newData[4]))
+        timeArray = []
+        for i in range(0, len(self.hs)):
+            timeArray.append(i * float(self.ui.timeEdit.text()))
         fig = Figure((450, 250, "px"))
         canvas = FigureCanvasAgg(fig)
         plot = fig.add_subplot(111)
-        plot.plot(self.hs)
+        plot.plot(timeArray, self.hs)
         plot.set_title("Wysokość po czasie")
         fig.savefig("hwykres.png")
         canvas.draw()
@@ -54,7 +57,7 @@ class MainWindow(QMainWindow):
         fig = Figure((450, 250, "px"))
         canvas = FigureCanvasAgg(fig)
         plot = fig.add_subplot(111)
-        plot.plot(self.vs)
+        plot.plot(timeArray, self.vs)
         plot.set_title("Prędkość po czasie")
         fig.savefig("vwykres.png")
         canvas.draw()
@@ -114,6 +117,8 @@ class MainWindow(QMainWindow):
 
     def onStop(self):
         self.process.kill()
+        self.vs = []
+        self.hs = []
 
 
 app = QApplication()
