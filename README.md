@@ -1,4 +1,6 @@
-Aplikacja konsolowa w C, znajduje się w folderze ```sim``` natomiast w ```ui``` znajduje się aplikacja desktopowa obsługująca ```sim```. W ```przykladowyWynik``` znajdują się wygenerowane w ```ui``` wykresy oraz plik csv.
+Aplikacja konsolowa w C znajduje się w folderze ```sim```. \ 
+W ```ui``` znajduje się aplikacja desktopowa obsługująca ```sim```, uruchamiana przez ```app.py```.\ 
+W ```przykladowyWynik``` znajdują się wygenerowane w ```ui``` wykresy oraz plik csv.
 # Syntax
 ```sim [m] [H_0] [v_0] [F_c] [nazwapliku] [timeflow]``` \
 \
