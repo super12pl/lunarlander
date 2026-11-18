@@ -40,18 +40,21 @@ int main(int argc,char *argv[])
     f = fopen(nazwapliku, "w");
     fprintf(f, "\"Wysokosc nad powierzchnia\";\"Predkosc pionowa w dol\";\"Stan silnika\"");
     printf("H=%.2fm, V=%.2fm/s, %s\n", H, v, silnik ? "ON" : "OFF");
+    fflush(stdout);
     pthread_t listener;
     pthread_create(&listener, NULL, silniklistener, NULL);
     while (1)
     {
-        delay(timeflow);
+       delay(timeflow);
         H -= v * timeflow;
         v += timeflow * (g - (silnik ? F_c / m : 0));
         printf("H=%.2fm, V=%.2fm/s, %s\n", H, v, silnik ? "ON" : "OFF");
         fprintf(f, "\n%f;%f;%d", H, v, silnik);
+        fflush(stdout);
         if (H <= 0)
         {
             printf("Ladownik %s. Nacisnij Enter aby zakonczyc program.", v < 1 ? "wyladowal bezpiecznie" : "rozbil sie");
+            fflush(stdout);
             break;
         }
     }
